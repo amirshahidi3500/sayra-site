@@ -103,6 +103,17 @@ footer h4{margin-bottom:12px;color:var(--a)}footer p,footer a{color:var(--mu);fo
 @keyframes zin{from{transform:scale(.85);opacity:0}}
 .note{text-align:center;color:var(--mu);font-size:12px;margin-top:22px}
 @media(max-width:700px){.gal figure.w{grid-column:auto}.gal figcaption{opacity:1;transform:none}}
+[hidden]{display:none!important}
+.dlg{display:flex;flex-direction:column;gap:10px}.dlg .btn{text-align:center}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(2,8,14,.88);backdrop-filter:blur(8px);display:grid;place-items:center;padding:4vw;overflow:auto}
+.mb{background:var(--bg2);border:1px solid var(--line);border-radius:26px;padding:28px;max-width:760px;width:100%;text-align:center;position:relative;animation:zin .4s}
+.x{position:absolute;top:14px;inset-inline-start:16px;background:0;border:0;color:var(--mu);font-size:22px;cursor:pointer}
+.tabs{display:inline-flex;gap:6px;background:var(--card);padding:5px;border-radius:50px;margin:14px 0}
+.tabs button{border:0;background:0;color:var(--mu);padding:7px 24px;border-radius:50px;font:inherit;cursor:pointer}.tabs .on{background:var(--a);color:#021018;font-weight:800}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.steps div{background:var(--card);border-radius:18px;padding:14px;font-size:13px;color:var(--mu)}.steps svg{width:110px;display:block;margin:0 auto 8px}
+.steps b{color:var(--a);display:block;margin-bottom:4px}
+.hl{animation:beam 1.6s infinite}
 </style>
 </head>
 <body>
@@ -126,14 +137,14 @@ footer h4{margin-bottom:12px;color:var(--a)}footer p,footer a{color:var(--mu);fo
 <rect x="94" y="220" width="12" height="36" rx="6" fill="#6b7f8e"/></svg>
 <span class="tag">● سامانه پایش لحظه‌ای دریا</span>
 <h1>سایرا؛ مینی بویه مخابراتی هوشمند برای دریا</h1>
-<p>موقعیت، باتری و داده‌های محیطی بویه شما از هر نقطه دریا، هر لحظه و بدون وقفه روی گوشی شما.</p>
+<p>ردیابی لحظه‌ای، پایش آب‌وهوا و پیش‌بینی اوضاع جوی با دقت بالا؛ همه‌چیز از هر نقطه دریا روی گوشی شما.</p>
 <div class="row"><a class="btn" href="#buy">خرید بویه</a><a class="btn g" href="#app">دانلود اپلیکیشن</a></div>
 </div>
 <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#030b14"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0 60Q360 0 720 60T1440 60V120H0Z;M0 60Q360 120 720 60T1440 60V120H0Z;M0 60Q360 0 720 60T1440 60V120H0Z"/></path></svg>
 </header>
 
 <div class="stats rv">
-<div><b data-n="12">0</b><span>روز عمر باتری در حالت فعال</span></div>
+<div><b data-n="14">0</b><span>روز عمر باتری در حالت فعال</span></div>
 <div><b data-n="3">0</b><span>ثانیه سریع‌ترین ارسال</span></div>
 <div><b data-n="99">0</b><span>درصد پایداری ارسال داده</span></div>
 <div><b data-n="24">0</b><span>ساعت پایش بی‌وقفه</span></div>
@@ -148,6 +159,8 @@ footer h4{margin-bottom:12px;color:var(--a)}footer p,footer a{color:var(--mu);fo
 <div class="card rv"><div class="ic">🌊</div><h3>بدنه ضدآب و ضدشوری</h3><p>ساخته‌شده از مواد مقاوم در برابر امواج، نمک و UV.</p></div>
 <div class="card rv"><div class="ic">☁️</div><h3>ذخیره ابری و آفلاین</h3><p>در قطعی اینترنت داده‌ها صف می‌شوند و پس از اتصال همگام می‌شوند.</p></div>
 <div class="card rv"><div class="ic">🔔</div><h3>هشدار هوشمند</h3><p>اعلان خروج از محدوده، افت باتری و قطع ارتباط.</p></div>
+<div class="card rv"><div class="ic">🧭</div><h3>دقت بالا</h3><p>کاوش دریا، بررسی آب‌وهوا و پیش‌بینی اوضاع جوی با داده‌های دقیق.</p></div>
+<div class="card rv"><div class="ic">📱</div><h3>اپ فارسی و ساده</h3><p>نمایش لحظه‌ای روی اندروید و آیفون، با نسخه PWA بدون نیاز به فروشگاه.</p></div>
 </div></section>
 
 <section class="sec" style="background:var(--bg2)">
@@ -163,11 +176,12 @@ footer h4{margin-bottom:12px;color:var(--a)}footer p,footer a{color:var(--mu);fo
 <div class="split">
 <div class="rv"><h2 style="text-align:right">اپلیکیشن سایرا</h2>
 <ul class="list"><li>نقشه زنده و تاریخچه مسیر بویه‌ها</li><li>مدیریت چند بویه و چند سیم‌کارت</li><li>ارسال فرمان به بویه از طریق اپ</li><li>اعلان‌های لحظه‌ای و گزارش‌گیری</li><li>کار خودکار در حالت آنلاین و آفلاین</li></ul>
-<div class="act" id="act"><h3>🔐 دانلود اپلیکیشن (ویژه خریداران)</h3>
-<p>کد فعال‌سازی که با خرید اشتراک نقره‌ای یا طلایی دریافت کرده‌اید را وارد کنید.</p>
-<div class="fr"><input id="lic" dir="ltr" placeholder="SAYRA-XXXX-XXXX" autocomplete="off"><button class="btn" id="vb">فعال‌سازی</button></div>
-<button class="btn g" id="tb" style="padding:7px 20px;font-size:13px;margin-top:10px">نصب آزمایشی (۷ روزه)</button>
-<div id="res" aria-live="polite"></div></div></div>
+<div class="act" id="act"><h3>📲 دانلود و نصب</h3>
+<p>نسخه آزمایشی در دسترس است؛ در آینده فقط برای خریداران اشتراک نقره‌ای و طلایی فعال می‌شود.</p>
+<div class="dlg" id="dlg"><a class="btn" href="buoy.apk" download="buoy.apk">⬇ Buoy APK</a><button class="btn g" id="pwab">🌐 نسخه PWA (آیفون و اندروید)</button><a class="btn g" href="sms-buoy.apk" download="sms-buoy.apk">✉️ SMS Buoy APK</a></div>
+<div id="gate" hidden><div class="fr"><input id="lic" dir="ltr" placeholder="SAYRA-XXXX-XXXX" autocomplete="off"><button class="btn" id="vb">فعال‌سازی</button></div><button class="btn g" id="tb" style="padding:7px 20px;font-size:13px;margin-top:10px">نصب آزمایشی (۷ روزه)</button></div>
+<div id="res" aria-live="polite"></div></div>
+<div id="pw" class="modal" hidden><div class="mb"><button class="x" id="pwx" aria-label="بستن">✕</button><h3>نصب سایرا روی صفحه اصلی</h3><div class="tabs"><button class="on" data-t="ios">آیفون</button><button data-t="and">اندروید</button></div><div class="steps" id="st"></div><a class="btn" href="https://sayra-buoy.amirsh00.ir/" target="_blank" rel="noopener" style="margin-top:20px">ورود به برنامه ←</a></div></div></div>
 <div class="rv"><div class="phone"><div class="sc"><b>SAYRA Fleet</b><div class="map"></div>
 <div class="row2"><span>بویه ۰۱</span><b style="color:var(--a)">آنلاین</b></div>
 <div class="row2"><span>باتری</span><b>87%</b></div>
@@ -194,7 +208,8 @@ footer h4{margin-bottom:12px;color:var(--a)}footer p,footer a{color:var(--mu);fo
 <h2 class="rv">مشخصات بویه</h2><p class="sub rv">نمونه مقادیر؛ مقادیر نهایی را جایگزین کنید.</p>
 <div class="spec rv">
 <div><span>ابعاد</span><b>قطر ۲۵ سانتی‌متر × ارتفاع ۴۵ سانتی‌متر</b></div>
-<div><span>وزن</span><b>۳٫۵ کیلوگرم</b></div>
+<div><span>وزن</span><b>۷٫۲ کیلوگرم</b></div>
+<div><span>عمر باتری</span><b>۱۴ روز در حالت فعال</b></div>
 <div><span>ارتباط</span><b>GSM / SMS (چند سیم‌کارت)</b></div>
 <div><span>موقعیت‌یابی</span><b>GPS با دقت ۲ تا ۵ متر</b></div>
 <div><span>تغذیه</span><b>باتری لیتیومی + پنل خورشیدی</b></div>
@@ -206,24 +221,24 @@ footer h4{margin-bottom:12px;color:var(--a)}footer p,footer a{color:var(--mu);fo
 <section id="buy" class="sec">
 <h2 class="rv">خرید بویه</h2><p class="sub rv">بسته مناسب خود را انتخاب کنید</p>
 <div class="grid">
-<div class="card price rv"><h3>اشتراک نقره‌ای 🥈</h3><div class="p">۰۰ میلیون</div><ul><li>۱ بویه سایرا</li><li>۱۲ ماه اشتراک اپلیکیشن</li><li>دانلود APK و PWA</li><li>پشتیبانی استاندارد</li></ul><a class="btn g" href="#contact">سفارش</a></div>
-<div class="card price hot rv"><h3>اشتراک طلایی 🥇</h3><div class="p">۰۰ میلیون</div><ul><li>۳ بویه سایرا</li><li>۱۲ ماه اشتراک اپلیکیشن</li><li>ارسال فرمان و گزارش پیشرفته</li><li>پشتیبانی اولویت‌دار</li></ul><a class="btn" href="#contact">سفارش</a></div>
+<div class="card price rv"><h3>اشتراک نقره‌ای 🥈</h3><div class="p">۷۰ میلیون تومان</div><ul><li>۱ بویه سایرا</li><li>۱۲ ماه اشتراک اپلیکیشن</li><li>دانلود APK و PWA</li><li>پشتیبانی استاندارد</li></ul><a class="btn g" href="#contact">سفارش</a></div>
+<div class="card price hot rv"><h3>اشتراک طلایی 🥇</h3><div class="p">۱۳۰ میلیون تومان</div><ul><li>۳ بویه سایرا</li><li>۱۲ ماه اشتراک اپلیکیشن</li><li>ارسال فرمان و گزارش پیشرفته</li><li>پشتیبانی اولویت‌دار</li></ul><a class="btn" href="#contact">سفارش</a></div>
 <div class="card price rv"><h3>سازمانی</h3><div class="p">تماس بگیرید</div><ul><li>ناوگان دلخواه</li><li>سرور اختصاصی</li><li>پشتیبانی ۲۴ ساعته</li></ul><a class="btn g" href="#contact">مشاوره</a></div>
 </div></section>
 
 <section id="team" class="sec team" style="background:var(--bg2)">
 <h2 class="rv">اعضای گروه</h2><p class="sub rv">تیم سازنده سایرا</p>
 <div class="grid">
-<div class="card rv"><div class="av">ا</div><h3>نام عضو ۱</h3><small>مدیر پروژه</small></div>
-<div class="card rv"><div class="av">ب</div><h3>نام عضو ۲</h3><small>توسعه‌دهنده نرم‌افزار</small></div>
-<div class="card rv"><div class="av">ج</div><h3>نام عضو ۳</h3><small>مهندس سخت‌افزار</small></div>
-<div class="card rv"><div class="av">د</div><h3>نام عضو ۴</h3><small>پشتیبانی فنی</small></div>
+<div class="card rv"><div class="av">ا</div><h3>سید امیر شهیدی</h3><small>سرپرست و مدیر پروژه<br>مهندس الکترونیک<br>مهندس کامپیوتر و کدنویسی</small><br><a class="btn g" style="padding:6px 18px;font-size:13px;margin-top:12px" href="https://github.com/amirshahidi3500" target="_blank" rel="noopener">GitHub</a></div>
+<div class="card rv"><div class="av">ح</div><h3>سید امیرحسین محسنی</h3><small>مهندس ناظر برق</small></div>
+<div class="card rv"><div class="av">ع</div><h3>علی فرچ‌نژاد</h3><small>مهندس مکانیک و مونتاژ</small></div>
 </div></section>
 
 <footer id="contact"><div class="fg">
 <div><div class="logo"><i></i>SAYRA</div><p style="margin-top:10px">سامانه هوشمند پایش و مخابره دریایی</p></div>
-<div><h4>پشتیبانی</h4><p>پاسخگویی روزهای کاری ۹ تا ۱۸</p><a href="mailto:support@example.com">support@example.com</a></div>
-<div><h4>شماره تماس</h4><a href="tel:+989120000000" dir="ltr" style="text-align:right">+98 912 000 0000</a><a href="tel:+982100000000" dir="ltr" style="text-align:right">+98 21 0000 0000</a></div>
+<div><h4>پشتیبانی</h4><p>پاسخگویی روزهای کاری ۹ تا ۱۸</p><a href="mailto:amirshahidi.3500@gmail.com">amirshahidi.3500@gmail.com</a></div>
+<div><h4>شماره تماس</h4><a href="tel:09135383485" dir="ltr" style="text-align:right">0913 538 3485</a><a href="tel:09104516195" dir="ltr" style="text-align:right">0910 451 6195</a><a href="tel:09945963310" dir="ltr" style="text-align:right">0994 596 3310</a></div>
+<div><h4>آدرس</h4><p>یزد، بلوار دانشگاه، دانشگاه یزد</p><a href="https://github.com/amirshahidi3500" target="_blank" rel="noopener">GitHub</a></div>
 <div><h4>دسترسی سریع</h4><a href="#app">دانلود برنامه</a><a href="#buy">خرید بویه</a><a href="#specs">مشخصات</a></div>
 </div><div class="copy">© 2026 SAYRA. همه حقوق محفوظ است.</div></footer>
 
@@ -247,11 +262,10 @@ function count(el){var n=+el.dataset.n,v=0,s=n/50;var f=setInterval(function(){v
 document.querySelectorAll('.card').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')})});
 
 // ---- Activation (set API to your Supabase edge function URL when ready) ----
-var CFG={API:'',APK:'#',PWA:'#'};
+var CFG={API:'',GATE:false}; // GATE:true = only buyers with a code can download
 var DEMO={'SAYRA-SILVER':{plan:'نقره‌ای',days:365},'SAYRA-GOLD':{plan:'طلایی',days:365},'TRIAL':{plan:'آزمایشی',days:7}};
 var res=document.getElementById('res');
-function show(r){var d=new Date(Date.now()+r.days*864e5).toLocaleDateString('fa-IR');
-res.innerHTML='<div class="ok">✓ اشتراک '+r.plan+' فعال شد؛ اعتبار تا '+d+'</div><div class="dl"><a class="btn" href="'+(r.apk||CFG.APK)+'">⬇ APK اندروید</a><a class="btn g" href="'+(r.pwa||CFG.PWA)+'">آیفون (PWA)</a></div><small>آیفون: در Safari دکمه Share ← Add to Home Screen</small>'}
+function show(r){var d=new Date(Date.now()+r.days*864e5).toLocaleDateString('fa-IR');res.innerHTML='<div class="ok">✓ اشتراک '+r.plan+' فعال شد؛ اعتبار تا '+d+'</div>';document.getElementById('dlg').hidden=false}
 function bad(m){res.innerHTML='<div class="err">'+m+'</div>'}
 function verify(code){res.textContent='در حال بررسی...';
 if(CFG.API){fetch(CFG.API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code})}).then(function(r){return r.json()}).then(function(j){j.ok?show(j):bad(j.error||'کد معتبر نیست')}).catch(function(){bad('خطا در اتصال به سرور')});return}
@@ -266,6 +280,27 @@ var lb=document.getElementById('lb');
 document.querySelectorAll('.gal img').forEach(function(i){i.parentNode.onclick=function(){lb.firstChild.src=i.src;lb.classList.add('on')}});
 lb.onclick=function(){lb.classList.remove('on')};
 addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
+
+// PWA install tutorial
+function ph(i){return '<svg viewBox="0 0 120 200"><rect x="6" y="4" width="108" height="192" rx="16" fill="#061320" stroke="#2b4a63" stroke-width="3"/><rect x="16" y="22" width="88" height="9" rx="4" fill="#12283b"/><rect x="16" y="40" width="88" height="56" rx="8" fill="#0f3a52"/>'+i+'</svg>'}
+var G='fill="#18e0c8"',hl=function(x){return '<g class="hl">'+x+'</g>'};
+var ROW=function(y,h,t){return '<rect x="14" y="'+y+'" width="92" height="20" rx="6" fill="'+(h?'#18e0c8':'#12283b')+'"/><text x="60" y="'+(y+13)+'" text-anchor="middle" font-size="8" fill="'+(h?'#021018':'#8fa9bf')+'">'+t+'</text>'};
+var T={ios:[
+['۱) دکمه Share','در Safari سایت را باز کنید و دکمه اشتراک‌گذاری پایین صفحه را بزنید.',ph('<rect x="16" y="168" width="88" height="18" rx="9" fill="#12283b"/>'+hl('<circle cx="60" cy="177" r="10" '+G+' opacity=".3"/><path d="M60 183v-12M55 175l5-5 5 5" stroke="#18e0c8" stroke-width="2" fill="none"/>'))],
+['۲) Add to Home Screen','در فهرست، گزینه Add to Home Screen را انتخاب کنید.',ph(ROW(108,0,'Copy')+ROW(132,1,'Add to Home Screen')+ROW(156,0,'Print'))],
+['۳) Add','دکمه Add را بزنید؛ آیکون سایرا روی صفحه اصلی ساخته می‌شود.',ph('<rect x="16" y="108" width="20" height="20" rx="6" fill="#12283b"/><rect x="42" y="108" width="20" height="20" rx="6" fill="#12283b"/><rect x="68" y="108" width="20" height="20" rx="6" fill="#12283b"/>'+hl('<rect x="16" y="136" width="20" height="20" rx="6" '+G+'/><circle cx="26" cy="146" r="4" fill="#021018"/>')+'<text x="26" y="168" text-anchor="middle" font-size="7" fill="#e8f4ff">SAYRA</text>')]],
+and:[
+['۱) منوی Chrome','در Chrome سایت را باز کنید و منوی سه‌نقطه بالای صفحه را بزنید.',ph(hl('<circle cx="97" cy="26" r="9" '+G+' opacity=".3"/>')+'<circle cx="97" cy="21" r="1.6" '+G+'/><circle cx="97" cy="26" r="1.6" '+G+'/><circle cx="97" cy="31" r="1.6" '+G+'/>')],
+['۲) Install app','گزینه Install app یا Add to Home screen را انتخاب کنید.',ph(ROW(108,0,'New tab')+ROW(132,1,'Install app')+ROW(156,0,'Settings'))],
+['۳) Install','در پنجره باز شده Install را بزنید؛ سایرا مثل یک برنامه نصب می‌شود.',ph('<rect x="16" y="104" width="88" height="62" rx="10" fill="#12283b"/><rect x="24" y="112" width="30" height="6" rx="3" fill="#8fa9bf"/>'+hl('<rect x="58" y="144" width="38" height="16" rx="8" '+G+'/><text x="77" y="155" text-anchor="middle" font-size="8" fill="#021018">Install</text>'))]]};
+var st=document.getElementById('st'),pw=document.getElementById('pw');
+function tab(k){st.innerHTML=T[k].map(function(x){return '<div>'+x[2]+'<b>'+x[0]+'</b>'+x[1]+'</div>'}).join('');document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===k)})}
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab(b.dataset.t)}});
+document.getElementById('pwab').onclick=function(){tab(/Android/i.test(navigator.userAgent)?'and':'ios');pw.hidden=false};
+document.getElementById('pwx').onclick=function(){pw.hidden=true};
+pw.onclick=function(e){if(e.target===pw)pw.hidden=true};
+addEventListener('keydown',function(e){if(e.key==='Escape')pw.hidden=true});
+if(CFG.GATE){document.getElementById('dlg').hidden=true;document.getElementById('gate').hidden=false}
 </script>
 </body>
 </html>
